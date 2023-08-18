@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Board />
   );
 }
 
 export default App;
+
+function Board() {
+  const numRows = 3;
+  const numCols = 3;
+
+  const rows = [];
+
+  for (let i = 0; i < numRows; i++) {
+    const squares = [];
+
+    for (let j = 0; j < numCols; j++) {
+      squares.push(<Square key={`${i}-${j}`} />);
+    }
+
+    rows.push(
+      <div className='board__row' key={i}>
+        {squares}
+      </div>
+    );
+  }
+
+  return <div className='board'>{rows}</div>;
+}
+
+function Square () {
+  return (
+    <button className='square'></button>
+  )
+}

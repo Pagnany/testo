@@ -1,38 +1,44 @@
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-  return (
-   <Board />
-  );
+  return <Board />;
 }
 
 export default App;
 
 function Board() {
-  const numRows = 3;
-  const numCols = 3;
-
-  const rows = [];
-
-  for (let i = 0; i < numRows; i++) {
-    const squares = [];
-
-    for (let j = 0; j < numCols; j++) {
-      squares.push(<Square key={`${i}-${j}`} />);
-    }
-
-    rows.push(
-      <div className='board__row' key={i}>
-        {squares}
+  return (
+    <>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
       </div>
-    );
-  }
-
-  return <div className='board'>{rows}</div>;
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+    </>
+  );
 }
 
-function Square () {
+function Square() {
+  const [value, setValue] = useState(null);
+
+  function handleClick() {
+    setValue("X");
+  }
+
   return (
-    <button className='square'></button>
-  )
+    <button className="square" onClick={handleClick}>
+      {value}
+    </button>
+  );
 }

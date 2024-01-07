@@ -10,6 +10,7 @@ export default App;
 function Board() {
   return (
     <>
+      <p>test</p>
       <div className="board-row">
         <Square />
         <Square />

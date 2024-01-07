@@ -34,7 +34,20 @@ function Square() {
   const [value, setValue] = useState(null);
 
   function handleClick() {
-    setValue("X");
+    switch (value) {
+      case null:
+        setValue("X");
+        break;
+      case "X":
+        setValue("O");
+        break;
+      case "O":
+        setValue(null);
+        break;
+      default:
+        setValue(null);
+        break;
+    }
   }
 
   return (
